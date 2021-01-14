@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{state.count}}</p>
+    <p>{{test}}</p>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    var state = {
+      count: 0
+    }
+    var app = new Vue({
+      el: '#app',
+      data: {
+        state,
+        test:''
+      }
+    })
+
+    // 초기 데이터를 지정을 해야된다. (초기화)
+    //이후 넣을 값과 같은 자료형으로 정의해 둔다.
+    
+    state.count += 2;
+    console.log(state);
+  </script>
+</body>
+
+</html>

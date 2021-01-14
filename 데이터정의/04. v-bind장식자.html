@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <pre>{{$data}}</pre>
+    <!-- DOM의 textContent 속성에 바인딩하기 -->
+    <div v-bind:text-content.prop="message">...</div>
+
+    <!-- DOM의 scrollTop 속성에 바인딩하기 -->
+    <div v-bind:scroll-top.prop="scroll" style="width:100; height: 5000px;">...</div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue.js!',
+        scroll: 0
+      },
+      mounted: function() {
+        this.scroll = 2000 // 요소의 스크롤 양 조작하기
+      }
+    })
+  </script>
+</body>
+
+</html>
