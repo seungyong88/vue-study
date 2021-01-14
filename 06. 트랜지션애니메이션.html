@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+  <style>
+    .v-enter-active, v-leave-active {
+      transition: opacity 1s;
+    }
+    .v-enter, v-leave-to {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:click="show=!show">변경하기</button>
+    <transition>
+      <p v-if="show">Hello vue.js</p>
+    </transition>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        show: true
+      },
+    })
+  </script>
+</body>
+
+</html>
