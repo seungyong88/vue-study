@@ -10,10 +10,10 @@
 <body>
   <div id="app">
     <input type="range" v-model.number="val"> {{val}}
-    <br />  
+    <br />
     <input type="text" v-model.number="price"> {{price}}
     <br />
-    <input type="range" v-model.lazy="lazy"> {{lazy}}
+    <input type="range" v-model.number="val"> {{val}}
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
   <script>
@@ -21,7 +21,6 @@
     var app = new Vue({
       el: '#app',
       data: {
-        lazy: 45,
         val: 50,
         price: 100
       }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app" style="height: 4000px;">
+    <div class="content">...</div>
+    <div v-on:click="scollTop" style="position: fixed; bottom:0;">탑으로이동</div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@12.1.5"></script>
+  <script>
+    var scroll = new SmoothScroll();
+    var app = new Vue({
+      el: '#app',
+      data: {
+        scrollY: 0,
+        timer: null
+      },
+      methods: {
+        // 위화감을 느끼지 않을 200ms 간격으로 scroll 데이터를 변경하는 예
+        scollTop() {
+          scroll.animateScroll(0);
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
