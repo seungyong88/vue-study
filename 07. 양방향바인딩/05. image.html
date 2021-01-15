@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="file" v-on:change="handleChange" >
+    <div v-if="preview">
+      <img v-bind:src="preview">
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    // img src가 있을 경우에만 preview가 나옴
+    var app = new Vue({
+      el: '#app',
+      data: {
+        preview: '',
+      },
+      methods: {
+        handleChange: function(evnet) {
+          var file = event.target.files[0];
+          if (file && file.type.match(/^image\/(png|jpge)$/)) {
+            this.preview = window.URL.createObjectURL(file)
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

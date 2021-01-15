@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="range" v-model.number="val"> {{val}}
+    <br />  
+    <input type="text" v-model.number="price"> {{price}}
+    <br />
+    <input type="range" v-model.lazy="lazy"> {{lazy}}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    // img src가 있을 경우에만 preview가 나옴
+    var app = new Vue({
+      el: '#app',
+      data: {
+        lazy: 45,
+        val: 50,
+        price: 100
+      }
+    })
+  </script>
+</body>
+
+</html>
