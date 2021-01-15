@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>X: {{ halfPoint.x }}</p>
+    <p>Y: {{ halfPoint.y }}</p>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    // 산출 속성이란 처리를 포함하고 있는 데이터.
+    var app = new Vue({
+      el: '#app',
+      data: {
+        width: 800, 
+        height: 600
+      },
+      computed: {
+        // 산출 속성 halfWidth 정의하기
+        halfWidth: function () {
+          return this.width / 2
+        },
+        halfHeight: function () {
+          return this.height / 2
+        },
+        halfPoint() {
+          return {
+            x: this.halfWidth,
+            y: this.halfHeight,
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

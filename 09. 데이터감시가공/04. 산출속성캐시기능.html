@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>산출 속성</p>
+    <ol>
+      <li>{{ computedData }}</li>
+      <li>{{ computedData }}</li>
+      <li>{{ computedData }}</li>
+      <li>{{ computedData }}</li>
+      <li>{{ computedData }}</li>
+      <li>{{ computedData }}</li>
+      <li>{{ computedData }}</li>
+      <li>{{ computedData }}</li>
+      <li>{{ computedData }}</li>
+      <li>{{ computedData }}</li>
+      <li>{{ computedData }}</li>
+      <li>{{ computedData }}</li>
+    </ol>
+    <p>메서드</p>
+    <ol>
+      <li>{{ methodsData() }}</li>
+      <li>{{ methodsData() }}</li>
+      <li>{{ methodsData() }}</li>
+      <li>{{ methodsData() }}</li>
+      <li>{{ methodsData() }}</li>
+      <li>{{ methodsData() }}</li>
+      <li>{{ methodsData() }}</li>
+      <li>{{ methodsData() }}</li>
+      <li>{{ methodsData() }}</li>
+      <li>{{ methodsData() }}</li>
+      <li>{{ methodsData() }}</li>
+      <li>{{ methodsData() }}</li>
+    </ol>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      computed: {
+        computedData: function() { return Math.random() }
+      },
+      methods: {
+        methodsData: function() { return Math.random() }
+      }
+    })
+  </script>
+</body>
+
+</html>

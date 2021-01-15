@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{width}}의 절반은 {{halfWidth}}</p>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    // 산출 속성이란 처리를 포함하고 있는 데이터.
+    var app = new Vue({
+      el: '#app',
+      data: {
+        width: 300
+      },
+      computed: {
+        // 산출 속성 halfWidth 정의하기
+        halfWidth: function () {
+          return this.width / 2
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
