@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(monster, key, index) in monsters" v-bind:key="monster.id">
+        ID.{{monster.id}} {{monster.name}} HP.{{ monster.hp }} index: {{index}}
+      </li>
+    </ul>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        monsters: [
+          { id: 1, name: '슬라임', hp: 100 },
+          { id: 2, name: '고블린', hp: 200 },
+          { id: 3, name: '드래곤', hp: 500 },
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>

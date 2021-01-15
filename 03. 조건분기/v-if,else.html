@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <div v-if="type === 'A'">
+      type는 A
+    </div>
+    <div v-else-if="type === 'B'">
+      type는 B
+    </div>
+    <div v-else>
+      모든 조건을 만족하지 않는 경우
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data : {
+        type: 'C'
+      }
+    })
+  </script>
+</body>
+
+</html>

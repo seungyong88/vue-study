@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- v if는 주석으로 처리되며, v-show는 display: none 처리 됨 -->
+    <div v-if="ok">v-if 조건으로 출력하기</div>
+    <div v-show="ok">v-show 조건으로 출력하기</div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data : {
+        ok: false
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:click="handleClick">Count up</button> 
+    <button v-on:click="show=!show">표시/비표시</button>
+    <span ref="count" v-if="show">0</span>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    // 예제에서 카운터를 하더라도 v-if로 변경이 일어나면 다시 0으로 돌아감
+    // 직접 DOM을 사용해 텍스트를 변경한 것은 가상DOM에 영향이 없기 때문에.
+    var app = new Vue({
+      el: '#app',
+      data: {
+        show : true,
+      },
+      mounted: function() {
+        console.log(this.$el);
+        console.log(this.$refs.hello);
+      },
+      methods: {
+        handleClick() {
+          var count = this.$refs.count;
+          if (count) {
+            count.innerText = parseInt(count.innerText, 10 ) + 1
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

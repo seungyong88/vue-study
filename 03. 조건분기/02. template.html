@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- template를 if로 분기처리 가능하다 show는 불가능 -->
+    <template v-if="ok">
+      <header>타이틀</header>
+      <div>콘텐츠</div>
+    </template>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data : {
+        ok: false
+      }
+    })
+  </script>
+</body>
+
+</html>

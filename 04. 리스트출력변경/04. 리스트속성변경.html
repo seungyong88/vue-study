@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+  <style>
+    .strong {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    이름 <input v-model="name">
+    <button v-on:click="doAdd">몬스터 추가하기</button>
+    <button v-on:click="onChange">몬스터 변경하기</button>
+    <button v-on:click="onCreated">속성 추가하기</button>
+    <ul>
+      <li v-for="(monster, index) in monsters" v-bind:key="monster.id" v-bind:class="{strong: monster.hp > 300}">
+        ID.{{monster.id}} {{monster.name}} HP.{{ monster.hp }} index: {{index}}
+        <span v-if="monster.hp < 50">큰 피해...!</span>
+        <button v-on:click="doRemove(index)">몬스터 제거하기</button>
+      </li>
+    </ul>
+    <button v-on:click="attack">공격하기</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        name: '',
+        monsters: [
+          { id: 1, name: '슬라임', hp: 100 },
+          { id: 2, name: '고블린', hp: 200 },
+          { id: 3, name: '드래곤', hp: 500 },
+        ]
+      },
+      methods: {
+        attack: function () {
+          this.monsters.forEach(monster =>{
+            monster.hp -= 50;
+          })
+
+          this.monsters = this.monsters.filter(monster => monster.hp > 50);
+        },
+        doAdd: function () {
+          var max = this.monsters.reduce(function (a, b) {
+            return a > b.id ? a : b.id
+          })
+
+          this.monsters.push({
+            id: max + 1,
+            name: this.name,
+            hp: 500
+          });
+        },
+        doRemove: function (index) {
+          console.log(index);
+          this.monsters.splice(index, 1)
+        },
+        onChange: function () {
+          this.$set(this.monsters, 0, { id: 1, name: '대왕 슬라임', hp: 600 });
+        },
+        onCreated: function () {
+          this.monsters.forEach((monster, index) => {
+            this.$set(monster, 'active', false);
+          })
+          // this.Set()
+        }
+      }
+
+    })
+  </script>
+</body>
+
+</html>
