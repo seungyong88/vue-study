@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="wrap" v-on:click="wrap">
+      <div class="overlay" v-on:click.stop="close">
+        닫기
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    // 이벤트 순서 1->3->2
+    var app = new Vue({
+      el: '#app',
+      methods: {
+        wrap() {
+          alert('wrap')
+        },
+        close: function () {
+          alert('닫기');
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
