@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vue.js App</title>
+</head>
+
+<body>
+	<!-- 
+		자식 컴포넌트의 상태에 따라서 부모 컴포넌트에서 어떤 액션을 실시하도록 처리하거나, 
+		자식 컴포넌트가 가진 데이터를 부모 컴포넌트에 전달하고 싶을 떄는 사용자 정의 이벤트와 $emit 이라는 인스턴스 메서드를 사용한다.
+	-->
+	<div id="app">
+		<comp-child v-bind:count="count" v-on:childs-event="parentsMethod" />
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+	<script>
+		var childComponent = {
+			template: `<div>{{count}}<button v-on:click="handleClick">이벤트 호출하기</button></div>`,
+			props: ['count'],
+			methods: {
+				// 버튼 클릭 이벤트 핸들러에서 childs-event 호출하기
+				handleClick: function () {
+					this.$emit('childs-event');
+				}
+			}
+		}
+		var app = new Vue({
+			el: '#app',
+			data: {
+				count: 0,
+			},
+			methods: {
+				parentsMethod: function () {
+					this.count++;
+				}
+			},
+			components: {
+				'comp-child': childComponent
+			}
+		})
+	</script>
+</body>

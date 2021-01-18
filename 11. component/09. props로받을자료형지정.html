@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <!-- id는 중복이 되지 않고, class는 중복이 허용된다. 다른 속성도 비슷하게 동작함 -->
+  <div id="app">
+    <ul>
+      <comp-child v-for="item in list" v-bind:key="item.id" v-bind:name="item.name" v-bind:hp="item.hp" />
+    </ul>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    var childComponent = {
+      template: '<li>{{name}} HP. {{ hp }} <button v-on:click="doAttack">공격하기</button></li>',
+      props: ['name', 'hp'],
+      methods: {
+        doAttack: function () {
+          // 공격하기
+          this.hp -= 10 // -> [Vue warn] error! 
+        }
+      }
+    }
+    var app = new Vue({
+      el: '#app',
+      data: {
+        list: [
+          { id: 1, name: '슬라임', hp: 100 },
+          { id: 2, name: '고블린', hp: 200 },
+          { id: 3, name: '드래곤', hp: 500 },
+        ]
+      },
+      components: {
+        'comp-child': childComponent
+      }
+    })
+  </script>
+</body>

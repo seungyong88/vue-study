@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vue.js App</title>
+</head>
+
+<body>
+	<!-- 
+		자식 컴포넌트의 상태에 따라서 부모 컴포넌트에서 어떤 액션을 실시하도록 처리하거나, 
+		자식 컴포넌트가 가진 데이터를 부모 컴포넌트에 전달하고 싶을 떄는 사용자 정의 이벤트와 $emit 이라는 인스턴스 메서드를 사용한다.
+	-->
+	<div id="app">
+		<ul>
+			<comp-child v-for="item in list" v-bind="item" v-on:attack="handleAttack" />
+		</ul>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+	<script>
+		var childComponent = {
+			template: `<li>{{ name }} HP. {{hp}} <button v-on:click="doAttack">이벤트 호출하기</button></li>`,
+			props: { id: Number, name: String, hp: Number },
+			methods: {
+				// 버튼 클릭 이벤트 핸들러에서 childs-event 호출하기
+				doAttack: function () {
+					this.$emit('attack', this.id);
+				}
+			}
+		}
+		var app = new Vue({
+			el: '#app',
+			data: {
+				list: [
+					{ id: 1, name: '슬라임', hp: 100 },
+					{ id: 2, name: '고블린', hp: 200 },
+					{ id: 3, name: '드래곤', hp: 500 },
+				]
+			},
+			methods: {
+				handleAttack(id) {
+					var item = this.list.find(function (el) {
+						return el.id === id
+					})
+
+					if (item !== undefined && item.hp > 0) item.hp -= 10;
+				}
+			},
+			components: {
+				'comp-child': childComponent
+			}
+		})
+	</script>
+</body>

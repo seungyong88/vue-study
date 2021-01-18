@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js App</title>
+</head>
+
+<body>
+    <div id="app">
+        <child-comp v-bind:val="message"></child-comp>
+        <child-comp v-bind:val="message"></child-comp>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        var childComponent = {
+            template: '<p>{{val}}</p>',
+            props: ['val']
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: "부모에서 내려주는 데이터"
+            },
+            components: {
+                'child-comp': childComponent
+            }
+        })
+    </script>
+</body>

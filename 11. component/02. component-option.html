@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <my-component></my-component>
+    <my-component></my-component>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    /*
+      data는 함수여야 함
+      컴포넌트의 옵션은 루트 생성자의 옵션과 거의 비슷하다. 다만 한 가지 큰 차이가 있는데 바로 데이터는 객체를 리턴하는 함수로 정의해야 한다는 점.
+      이는 여러 개의 컴포넌트 인스턴스들이 같은 객체를 참조해서 상태가 공유되는 것을 회피하기 위함임
+
+      JSX처럼 반드시 루트 요소는 하나여야 함
+     */
+    var myComponent = {
+      template: '<p>{{message}}</p>',
+      data: function () {
+        return {
+          message: 'Hello Vue.js'
+        }
+      },
+      methods: {
+        // 메서드, 산출 속성, 워처의 정의 방법은 루트 생성자 객체와 같음
+      }
+    }
+    // Vue.component('my-component', {
+    //     template: '<p>MyComponent</p>'
+    // })
+    var app = new Vue({
+      el: '#app',
+      components: {
+        // 'my-component': myComponent
+        'MyComponent': myComponent
+      }
+    })
+  </script>
+</body>
