@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <child-comp>
+      <header slot="header">
+        Hello Vue.js!
+      </header>
+      Vue.js는 Javascript 프레임워크입니다.
+    </child-comp>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    var template = `
+      <section class="child-comp">
+        <slot name="header">디폴트</slot>
+        <div class="content">
+          <slot>디폴트 콘텐츠</slot>
+        </div>
+        <slot name="footer">
+          <!-- 없을 경우 아무것도 출력하지 않음 -->
+        </slot>
+      </section> 
+    `
+    Vue.component('child-comp', {
+      template: template
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+      },
+    })
+  </script>
+</body>

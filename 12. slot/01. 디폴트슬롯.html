@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <child-comp></child-comp>
+    <child-comp>넣을경우</child-comp>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    Vue.component('child-comp', {
+      template: '<div class="comp-child">여기에 슬롯을 넣음 <slot>아무것도 안 넣을 경우</slot> </div>'
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+      },
+    })
+  </script>
+</body>

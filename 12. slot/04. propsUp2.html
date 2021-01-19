@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+</head>
+
+<body>
+  <div id="app">
+    <child-comp>
+      <li slot-scope="props">{{ props.item }}</li>
+    </child-comp>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    var template = `
+      <ul class="child-comp">
+        <slot v-for="item in list" v-bind:item="item"><slot>  
+      </ul>
+    `;
+    Vue.component('child-comp', {
+      template: template,
+      data: function() {
+        return {
+          list: [1,2,3,4,5]
+        }
+      }
+    })
+
+    var app = new Vue({
+      el: '#app',
+    })
+  </script>
+</body>
