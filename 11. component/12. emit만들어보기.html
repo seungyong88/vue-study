@@ -13,8 +13,40 @@
 		자식 컴포넌트가 가진 데이터를 부모 컴포넌트에 전달하고 싶을 떄는 사용자 정의 이벤트와 $emit 이라는 인스턴스 메서드를 사용한다.
 	-->
 	<div id="app">
+		<ul>
+			<child-comp v-for="item in list" v-on:attack="doAttack" v-bind="item"></child-comp>
+		</ul>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 	<script>
+		var childComponent = {
+			template: `<li v-on:click="childMethod">{{id}} {{name}} {{hp}}</li>`,
+			props: { id: Number, name: String, hp: Number },
+			methods: {
+				childMethod() {
+					this.$emit('attack', this.id);
+				}
+			}
+		}
+
+		var app = new Vue({
+			el: "#app",
+			data: {
+				list: [
+					{ id: 1, name: '슬라임', hp: 100 },
+					{ id: 2, name: '고블린', hp: 200 },
+					{ id: 3, name: '이블린', hp: 500 },
+				]
+			},
+			components: {
+				'child-comp': childComponent
+			},
+			methods: {
+				doAttack(id) {
+					var obj = this.list.find(obj => obj.id === id);
+					obj.hp > 0 ? obj.hp -= 10 : null;
+				}
+			}
+		})
 	</script>
 </body>
