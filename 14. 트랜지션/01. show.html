@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+
+  <style>
+    /* 1초 동안 투명도를 변화 */
+    .v-enter-active,
+    .v-leave-active {
+      transition: opacity 1s;
+    }
+
+    /* 더 이상 보이게 되지 않았을 때의 투명도 */
+    .v-enter,
+    .v-leave-to {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <p><button v-on:click="show=!show">변경하기</button></p>
+    <transition>
+      <div v-show="show">
+        트랜지션시킬 요소
+      </div>
+    </transition>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        show: true
+      }
+    })
+  </script>
+</body>

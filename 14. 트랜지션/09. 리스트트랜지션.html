@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+
+  <style>
+    /* 1초 동안 투명도를 변화 */
+    .v-enter-active,
+    .v-leave-active {
+      transition: opacity 1s, transform 1s;
+      position: absolute;
+    }
+
+    .v-enter {
+      opacity: 0;
+    }
+
+    .v-leave-to {
+      opacity: 0;
+    }
+
+    .v-move {
+      transition: transform 1s;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:click="order=!order">변경하기</button>
+    <!-- transition-group 태그로 지정한 속성은 랩 요소에 추가하기 -->
+    <transition-group tag="ul" class="list">
+      <li v-for="item in sortedList" v-bind:key="item.id">
+        {{ item.name }} {{ item.price }}원
+      </li>
+    </transition-group>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        order: false,
+        list: [
+          { id: 1, name: '사과', price: 100 },
+          { id: 2, name: '바나나', price: 200 },
+          { id: 3, name: '딸기', price: 300 },
+        ]
+      },
+      computed: {
+        // order 값에 따라 리스트의 순서를 반전하는 산출 속성
+        sortedList() {
+          return this.order ? this.list.sort((a, b) => a.price - b.price) : this.list.sort((a, b) => b.price - a.price);
+        }
+      }
+    })
+  </script>
+</body>

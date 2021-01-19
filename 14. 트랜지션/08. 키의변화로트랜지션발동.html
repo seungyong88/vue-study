@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+
+  <style>
+    /* 1초 동안 투명도를 변화 */
+    .v-enter-active,
+    .v-leave-active {
+      transition: opacity 1s, transform 1s;
+      position: absolute;
+    }
+
+    .v-enter {
+      opacity: 0;
+    }
+
+    .v-leave-to {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:click="count++"> 변경하기 </button>
+    <transition>
+      <div v-bind:key="count">{{ count }}</div>
+    </transition>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        count: 0
+      }
+    })
+  </script>
+</body>
