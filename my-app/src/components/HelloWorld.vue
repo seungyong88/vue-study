@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ test }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
       check out the
@@ -103,10 +103,24 @@
 </template>
 
 <script>
+import store from "@/store";
 export default {
   name: "HelloWorld",
   props: {
     msg: String
+  },
+  computed: {
+    test() {
+      console.log(store.state.moduleA.count);
+      console.log(store.state.moduleB.count);
+      store.commit('moduleA/update');
+      store.commit('moduleB/update');
+      console.log(store.state.moduleA.count);
+      console.log(store.state.moduleB.count);
+      return store.state.moduleA.count;
+      
+      // console.log(store.moduleA.count);
+    }
   }
 };
 </script>

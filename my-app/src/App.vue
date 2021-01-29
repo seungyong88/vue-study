@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <p>{{ message }}</p>
+    <HelloWorld />
     <EditForm1 />
     <EditForm2 />
   </div>
@@ -9,10 +10,11 @@
 <script>
 import EditForm1 from "@/components/EditForm-1.vue";
 import EditForm2 from "@/components/EditForm-2.vue";
+import HelloWorld from "@/components/HelloWorld.vue";
 import store from "./store";
 export default {
   name: "app",
-  components: { EditForm1, EditForm2 },
+  components: { EditForm1, EditForm2, HelloWorld },
   computed: {
     // 로컬 message와 스토어의 message 동기화
     message: () => store.getters.message
