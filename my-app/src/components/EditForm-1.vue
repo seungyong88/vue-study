@@ -10,10 +10,14 @@ export default {
   name: "EditForm",
   computed: {
     message: {
-      get() { return store.getters.message }, 
-      set(value) { store.dispatch('doUpdate', value) }  
+      get() {
+        return store.getters.message;
+      },
+      set(value) {
+        store.dispatch("doUpdate", value);
+      }
     }
-  },
+  }
 };
 </script>
 <style></style>

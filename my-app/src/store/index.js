@@ -1,46 +1,43 @@
 import { createStore } from "vuex";
+import axios from 'axios';
+// import moduleA from "./a.js";
+// import moduleB from "./b.js";
 
-const moduleA = {
+const myModule = {
   namespaced: true,
-  state : {
-    count: 1
+  state() {
+    return {
+      entries: []
+    };
   },
   mutations: {
-    update: state => state.count += 100
-  }
-}
-
-const moduleB = {
-  namespaced: true,
-  state : {
-    count: 2
-  },
-  mutations: {
-    update: state => state.count += 200
-  }
-}
-
-
-export default createStore({
-  state: {
-    message: "테스트"
-  },
-  modules: {
-    moduleA, 
-    moduleB
-  },
-  getters: {
-    message: state => state.message
-  },
-  mutations: {
-    setMessage(state, payload) {
-      state.message = payload.message;
+    set(state, payload) {
+      state.entries = payload;
     }
   },
   actions: {
-    doUpdate({ commit }, message) {
-      // 여기에 비동기 통신 전부 완료 후 commit 
-      commit("setMessage", { message });
+    load({ commit }, file) {
+      axios.get(file).then(response => {
+        console.log(file, response);
+        commit("set", response.data);
+      });
+    }
+  }
+};
+
+export default createStore({
+  modules: {
+    moduleA: myModule,
+    moduleB: myModule
+  },
+  mutations: {
+    update() {
+      console.log("mutation: update");
     }
   },
+  actions: {
+    update() {
+      console.log("action: update");
+    }
+  }
 });

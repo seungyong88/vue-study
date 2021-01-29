@@ -9,6 +9,7 @@
       >.
     </p>
     <h3>Installed CLI Plugins</h3>
+
     <ul>
       <li>
         <a
@@ -100,6 +101,9 @@
       </li>
     </ul>
   </div>
+.
+  <!-- <input type="file" id="file" class="custom-file-input" v-on:change="previewFiles(this.file)" multiple> -->
+  <input type="file" @change="previewFiles" multiple>
 </template>
 
 <script>
@@ -111,15 +115,25 @@ export default {
   },
   computed: {
     test() {
-      console.log(store.state.moduleA.count);
-      console.log(store.state.moduleB.count);
-      store.commit('moduleA/update');
-      store.commit('moduleB/update');
-      console.log(store.state.moduleA.count);
-      console.log(store.state.moduleB.count);
+      // 어떤 것이 호출되었는지 로그로 확인해 보기
+      // store.dispatch("moduleA/test");
+      // console.log(store.getters["moduleA/test"]);
+
+    //  let filepath1 = require('../assets/data1.json');
+    //   let filepath2 = require('../assets/data2.json');
+      store.dispatch("moduleA/load", '../assets/data2.json');
+      // store.dispatch("moduleB/load", filepath2);
       return store.state.moduleA.count;
-      
       // console.log(store.moduleA.count);
+    }
+  },
+  methods: {
+     previewFiles() {
+        // console.log(require('../assets/data1.json'));
+        let filepath1 = require('../assets/data2.json');
+        let filepath2 = require('../assets/data2.json');
+        store.dispatch("moduleA/load", filepath1);
+        store.dispatch("moduleB/load", filepath2);
     }
   }
 };
