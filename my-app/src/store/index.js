@@ -1,7 +1,5 @@
 import { createStore } from "vuex";
 import axios from 'axios';
-// import moduleA from "./a.js";
-// import moduleB from "./b.js";
 
 const myModule = {
   namespaced: true,
@@ -25,7 +23,7 @@ const myModule = {
   }
 };
 
-export default createStore({
+const store = createStore({
   modules: {
     moduleA: myModule,
     moduleB: myModule
@@ -41,3 +39,12 @@ export default createStore({
     }
   }
 });
+
+const unwatch = store.watch((state, getters) => {
+  return state.count
+},(newVal, oldVal) => {
+  //처리
+  console.log(newVal, oldVal)
+})
+
+export default store;
