@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import axios from 'axios';
+import axios from "axios";
 
 const myModule = {
   namespaced: true,
@@ -40,11 +40,15 @@ const store = createStore({
   }
 });
 
-const unwatch = store.watch((state, getters) => {
-  return state.count
-},(newVal, oldVal) => {
-  //처리
-  console.log(newVal, oldVal)
-})
+// const unwatch = store.watch(
+//   (state, getters) => {
+//     console.log(getters)
+//     return state.count;
+//   },
+//   (newVal, oldVal) => {
+//     //처리
+//     console.log(newVal, oldVal);
+//   }
+// );
 
 export default store;

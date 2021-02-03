@@ -1,20 +1,26 @@
 <template>
   <div id="app">
     <p>{{ message }}</p>
-    <HelloWorld />
+    <!-- <router /> -->
+    <nav>
+      <router-link to="/">Home</router-link>
+      <router-link to="/product">상품정보</router-link>
+    </nav>
+    <router-view />
+    <!-- <HelloWorld />
     <EditForm1 />
-    <EditForm2 />
+    <EditForm2 /> -->
   </div>
 </template>
 
 <script>
-import EditForm1 from "@/components/EditForm-1.vue";
-import EditForm2 from "@/components/EditForm-2.vue";
-import HelloWorld from "@/components/HelloWorld.vue";
+// import EditForm1 from "@/components/EditForm-1.vue";
+// import EditForm2 from "@/components/EditForm-2.vue";
+// import HelloWorld from "@/components/HelloWorld.vue";
 import store from "./store";
 export default {
   name: "app",
-  components: { EditForm1, EditForm2, HelloWorld },
+  // components: { EditForm1, EditForm2, HelloWorld },
   computed: {
     // 로컬 message와 스토어의 message 동기화
     message: () => store.getters.message

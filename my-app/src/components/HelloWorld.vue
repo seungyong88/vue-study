@@ -101,9 +101,9 @@
       </li>
     </ul>
   </div>
-.
+  .
   <!-- <input type="file" id="file" class="custom-file-input" v-on:change="previewFiles(this.file)" multiple> -->
-  <input type="file" @change="previewFiles" multiple>
+  <input type="file" @change="previewFiles" multiple />
 </template>
 
 <script>
@@ -119,21 +119,21 @@ export default {
       // store.dispatch("moduleA/test");
       // console.log(store.getters["moduleA/test"]);
 
-    //  let filepath1 = require('../assets/data1.json');
-    //   let filepath2 = require('../assets/data2.json');
-      store.dispatch("moduleA/load", '../assets/data2.json');
+      //  let filepath1 = require('../assets/data1.json');
+      //   let filepath2 = require('../assets/data2.json');
+      store.dispatch("moduleA/load", "../assets/data2.json");
       // store.dispatch("moduleB/load", filepath2);
       return store.state.moduleA.count;
       // console.log(store.moduleA.count);
     }
   },
   methods: {
-     previewFiles() {
-        // console.log(require('../assets/data1.json'));
-        let filepath1 = require('../assets/data2.json');
-        let filepath2 = require('../assets/data2.json');
-        store.dispatch("moduleA/load", filepath1);
-        store.dispatch("moduleB/load", filepath2);
+    previewFiles() {
+      // console.log(require('../assets/data1.json'));
+      let filepath1 = require("../assets/data2.json");
+      let filepath2 = require("../assets/data2.json");
+      store.dispatch("moduleA/load", filepath1);
+      store.dispatch("moduleB/load", filepath2);
     }
   }
 };
